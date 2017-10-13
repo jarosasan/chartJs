@@ -17,8 +17,6 @@ var myChart = new Chart(ctx, {
             data: [],
             borderWidth: 1,
             backgroundColor: [],
-
-            // Changes this dataset to become a line
             type: 'bar'
         }]
     }
@@ -26,13 +24,13 @@ var myChart = new Chart(ctx, {
 var myChart2 = new Chart(ctx2, {
     type: 'pie',
     data: {
-        labels: ['rr','tt','yy'],
+        labels: [],
         datasets: [{
-            label: 'Amzius',
-            data: [1,2,3,],
+            label: [],
+            data: [],
             borderColor: [],
             borderWidth: 1,
-            backgroundColor:['red', 'blue', 'green'],
+            backgroundColor:[],
         }]
     }
 });
@@ -43,22 +41,44 @@ function chartData() {
     myChart.data.datasets[1].data.push(document.getElementById('sel').value);
     myChart.data.datasets[0].backgroundColor.push(document.getElementById('spalva').value);
 
+    myChart.data.datasets[0].backgroundColor.push(document.getElementById('spalva').value);
+    myChart2.data.labels.push(document.getElementById('name').value);
+    myChart2.data.datasets[0].data.push(document.getElementById('sel').value);
+    myChart2.data.datasets[0].backgroundColor.push(
+        function rib( seler = document.getElementById('sel').value) {
+
+    if(seler >= 380){
+        value = 'green';
+    }else{
+        value ='red';
+    };
+
+
+);
+
+
     myChart.update();
+    myChart2.update();
 }
 
 function c_Data() {
     myChart.data.labels.pop();
     myChart.data.datasets[0].data.pop();
     myChart.data.datasets[1].data.pop();
+    myChart2.data.labels.pop();
+    myChart2.data.datasets[0].data.pop();
 
     myChart.update();
+    myChart2.update();
 }
 
 function chartClier() {
     myChart.data.labels = [];
     myChart.data.datasets[0].data = [];
     myChart.data.datasets[1].data = [];
+    myChart2.data.labels = [];
+    myChart2.data.datasets[0].data = [];
 
 
     myChart.update();
-}
+    myChart2.update();}
